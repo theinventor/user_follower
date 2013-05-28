@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Visitor:</strong>
+  <%= @track.visitor_id %>
+</p>
+
+<p>
+  <strong>Full path:</strong>
+  <%= @track.full_path %>
+</p>
+
+<p>
+  <strong>Referrer:</strong>
+  <%= @track.referrer %>
+</p>
+
+
+<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Back', tracks_path %>

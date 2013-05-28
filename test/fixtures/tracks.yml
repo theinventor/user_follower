@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  visitor_id: 1
+  full_path: MyText
+  referrer: MyString
+
+two:
+  visitor_id: 1
+  full_path: MyText
+  referrer: MyString

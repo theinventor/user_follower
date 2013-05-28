@@ -1,0 +1,17 @@
+== README
+
+This is an app built to help a multi-app infrastructure track marketing campaigns.
+
+You run it somewhere (heroku) and include the application.js file remotely on all your apps.
+
+```html
+<script src="http://tracker.dev/assets/application.js"></script>
+
+```
+
+Now it'll build a visitor based on the request IP and track their page views.
+
+You can then make a call to /visitors?uuid=IP at any time and get all their history.
+
+One way to utilize this might be to have a signup form trigger a job to go collect the history
+and attach it somewhere connected to the user. Now you know what campaign/source/etc they came from.
