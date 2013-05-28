@@ -10110,8 +10110,7 @@ $(document).ready(function() {
             data: JSON.stringify(postData),
             async: true
         }).done(function(response){
-                console.log('we are sending some tracks...');
-                console.log(response);
+//                coming soon;
             });
     }
 
