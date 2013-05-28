@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     function postTrackerTracks(myUuid){
         var postData = {track: {uuid: myUuid.uuid, full_path: document.URL, referrer: document.referrer}};
-        var postUrl = 'http://tracker.dev:5000/tracks';
+        var postUrl = 'http://user-follower.herokuapp.com/tracks';
 
         $.ajax({
             type: "POST",
