@@ -59,7 +59,7 @@ $(document).ready(function() {
 
     function getUUID(){
         var result = '';
-        var url =  "http://user_follower.herokuapp.com/visitors/new.json";
+        var url =  "http://user-follower.herokuapp.com/visitors/new.json";
         $.getJSON(url, null, function(response) {
             result = response.uuid;
             postTrackerTracks(result);
