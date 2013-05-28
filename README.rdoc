@@ -4,7 +4,7 @@ This is an app built to help a multi-app infrastructure track marketing campaign
 
 You run it somewhere (heroku) and include the application.js file remotely on all your apps.
 
-```html
+```
 <script src="http://tracker.dev/assets/application.js"></script>
 
 ```
