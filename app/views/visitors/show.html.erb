@@ -1,0 +1,5 @@
+<ul>
+<% @visitor.tracks.each do |track|  %>
+     <li><%= track.full_path %> | <%= track.referrer %></li>
+<% end %>
+</ul>

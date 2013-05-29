@@ -10,7 +10,7 @@ class VisitorsController < ApplicationController
   # GET /visitors/1
   # GET /visitors/1.json
   def show
-
+    @visitor = Visitor.find params[:id]
   end
 
   def welcome
