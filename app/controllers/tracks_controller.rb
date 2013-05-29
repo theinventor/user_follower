@@ -5,7 +5,12 @@ class TracksController < ApplicationController
   # GET /tracks
   # GET /tracks.json
   def index
-    @tracks = Track.all
+    visitor = Visitor.find_by_uuid params[:uuid]
+    if visitor
+      @tracks = visitor.tracks.limit(1000)
+    else
+      render text: 'sorry, try with the right param'
+    end
   end
 
   # GET /tracks/1
@@ -70,13 +75,13 @@ class TracksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_track
-      @track = Track.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_track
+    @track = Track.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def track_params
-      params.require(:track).permit(:uuid, :full_path, :referrer)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def track_params
+    params.require(:track).permit(:uuid, :full_path, :referrer)
+  end
 end

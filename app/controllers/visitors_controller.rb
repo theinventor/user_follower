@@ -1,16 +1,16 @@
 class VisitorsController < ApplicationController
-  before_action :set_visitor, only: [:show, :edit, :update, :destroy]
   protect_from_forgery :except => [:options, :create]
 
   # GET /visitors
   # GET /visitors.json
   def index
-    @visitors = Visitor.all
+    render json: Visitor.paginate(:page => params[:page], :per_page => 300)
   end
 
   # GET /visitors/1
   # GET /visitors/1.json
   def show
+
   end
 
   def welcome
@@ -22,7 +22,6 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.find_by_uuid request.ip
 
     if @visitor
-      puts "YAY - ALREADY HAVE A VISITOR"
       render action: 'show', status: :created, location: @visitor and return
     else
       @visitor = Visitor.generate_new(request.ip)
@@ -41,9 +40,6 @@ class VisitorsController < ApplicationController
 
   end
 
-  # GET /visitors/1/edit
-  def edit
-  end
 
   # POST /visitors
   # POST /visitors.json
@@ -61,29 +57,22 @@ class VisitorsController < ApplicationController
   #  end
   #end
 
-  # PATCH/PUT /visitors/1
-  # PATCH/PUT /visitors/1.json
-  def update
-    respond_to do |format|
-      if @visitor.update(visitor_params)
-        format.html { redirect_to @visitor, notice: 'Visitor was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @visitor.errors, status: :unprocessable_entity }
-      end
-    end
+  def clear
+    visitor = Visitor.find_by_uuid params[:uuid]
+    visitor.try(:destroy) if visitor
+    render text: 'okie dokie'
   end
 
   # DELETE /visitors/1
-  # DELETE /visitors/1.json
-  def destroy
-    @visitor.destroy
-    respond_to do |format|
-      format.html { redirect_to visitors_url }
-      format.json { head :no_content }
-    end
-  end
+  ## DELETE /visitors/1.json
+  #def destroy
+  #  @visitor = Visitor.find_by_uuid params[:id]
+  #  @visitor.destroy
+  #  respond_to do |format|
+  #    format.html { redirect_to visitors_url }
+  #    format.json { head :no_content }
+  #  end
+  #end
 
   def options
     headers['Access-Control-Allow-Origin'] = '*'

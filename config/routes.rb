@@ -1,7 +1,12 @@
 UserFollower::Application.routes.draw do
-  resources :tracks
 
-  resources :visitors
+  resources :tracks
+  resources :visitors do
+    collection do
+      post :clear
+      get :clear
+    end
+  end
   match '/visitors', :controller => 'visitors', :action => 'options', :via => :options
   match '/tracks', :controller => 'tracks', :action => 'options', :via => :options
 
